@@ -1,0 +1,13 @@
+name: Project Forked
+
+on:
+  fork:
+    types: created
+
+jobs:
+  forked:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display fork message
+        run: echo "A new fork was created! 🚀"

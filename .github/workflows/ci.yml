@@ -19,8 +19,6 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
-
-
       - name: Install dependencies
         run: ./mvnw install -DskipTests
 

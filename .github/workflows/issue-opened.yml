@@ -1,0 +1,19 @@
+name: Issue Opened Notification
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Comment on issue
+        env:
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run:
+          echo "Bonjour $ISSUE_AUTHOR, Nous avons bien pris en compte votre problème du nom de : $ISSUE_TITLE"
