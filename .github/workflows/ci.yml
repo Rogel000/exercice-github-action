@@ -19,8 +19,7 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
-      - name: Make mvn executable
-        run: chmod +x mvn
+
 
       - name: Install dependencies
         run: ./mvnw install -DskipTests
