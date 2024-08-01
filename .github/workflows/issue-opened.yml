@@ -1,19 +1,16 @@
-name: Issue Opened Notification
-
 on:
   issues:
     types: [opened]
 
 jobs:
-  notify:
+  issue_received:
     runs-on: ubuntu-latest
     permissions:
       issues: write
-
     steps:
-      - name: Comment on issue
+      - run: gh issue comment $ISSUE_URL --body "Bonjour '$AUTHOR' Nous avons bien pris en compte votre problème du nom de '$ISSUE_NAME'."
         env:
-          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-        run:
-          echo "Bonjour $ISSUE_AUTHOR, Nous avons bien pris en compte votre problème du nom de : $ISSUE_TITLE"
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_NAME: ${{ github.event.issue.title }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
