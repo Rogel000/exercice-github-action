@@ -19,14 +19,14 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
-      - name: Make mvnw executable
-        run: chmod +x mvnw
+      - name: Make mvn executable
+        run: chmod +x mvn
 
       - name: Install dependencies
-        run: ./mvnw install -DskipTests
+        run: ./mvn install -DskipTests
 
       - name: Build the application
-        run: ./mvnw package -DskipTests
+        run: ./mvn package -DskipTests
 
       - name: Display build message
         run: echo "Build of the application was successful!"
