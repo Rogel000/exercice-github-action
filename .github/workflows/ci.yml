@@ -16,12 +16,17 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
+          distribution: 'adopt'
           java-version: '17'
 
-      - name: Build the application
-        run: |
-          ./mvnw install -DskipTests
-          ./mvnw package -DskipTests
+      - name: Make mvnw executable
+        run: chmod +x mvnw
 
-      - name: Build message
+      - name: Install dependencies
+        run: ./mvnw install -DskipTests
+
+      - name: Build the application
+        run: ./mvnw package -DskipTests
+
+      - name: Display build message
         run: echo "Build of the application was successful!"
