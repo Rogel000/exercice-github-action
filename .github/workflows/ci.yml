@@ -5,7 +5,23 @@ on:
     branches:
       - main
 
+
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Java version
+        run: java -version
+
+      - name: Check Maven version
+        run: ./mvnw --version
+
+      - name: Display POM file
+        run: cat pom.xml
+
+      - name: List project files
+        run: ls -la
+
   build:
     runs-on: ubuntu-latest
     steps:
