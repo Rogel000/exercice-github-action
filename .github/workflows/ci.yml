@@ -36,7 +36,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: target/Exercice6Spring-1.0.0.jar
-
-      - name: Display build message
-        run: echo "Build of the application was successful!"
+          path: dist
+  download:
+    runs-on: ubuntu-latest
+    needs: upload
+    steps:
+      - name: Récupérer l'artéfact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+      - name: lister les fichiers
+        run: ls
