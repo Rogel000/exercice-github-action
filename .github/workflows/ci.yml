@@ -33,7 +33,7 @@ jobs:
         run: ./mvn test
 
       - name: Build the application
-        run: ./mvnw package
+        run: ./mvn package
         if: ${{ success() }}
 
       - name: Upload artifact
