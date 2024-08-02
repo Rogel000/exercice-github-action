@@ -14,3 +14,4 @@ jobs:
           AUTHOR: ${{ github.event.issue.user.login }}
           ISSUE_NAME: ${{ github.event.issue.title }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
