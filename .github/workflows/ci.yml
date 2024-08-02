@@ -19,11 +19,24 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
       - name: Install dependencies
         run: ./mvnw install -DskipTests
 
       - name: Build the application
         run: ./mvnw package -DskipTests
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: target/Exercice6Spring-1.0.0.jar
 
       - name: Display build message
         run: echo "Build of the application was successful!"
