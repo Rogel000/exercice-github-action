@@ -28,9 +28,9 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Install dependencies
-        run: ./mvnw install
+        run: ./mvn install
       - name: Run tests
-        run: ./mvnw test
+        run: ./mvn test
 
       - name: Build the application
         run: ./mvnw package
