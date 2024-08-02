@@ -28,12 +28,12 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Install dependencies
-        run: ./mvn install
+        run: ./mvn install -DskipTests
       - name: Run tests
         run: ./mvn test
 
       - name: Build the application
-        run: ./mvn package
+        run: ./mvn package -DskipTests
         if: ${{ success() }}
 
       - name: Upload artifact
